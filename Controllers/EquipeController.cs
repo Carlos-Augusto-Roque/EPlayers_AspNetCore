@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using EPlayers_AspNetCore.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -32,7 +33,39 @@ namespace EPlayers_AspNetCore.Controllers
             Equipe novaEquipe = new Equipe();
             novaEquipe.IdEquipe = Int32.Parse(form["IdEquipe"]);
             novaEquipe.Nome = form["Nome"];
-            novaEquipe.Imagem = form["Imagem"];
+
+            // Upload início
+
+            //verificado se o usuário selecionou um arquivo (imagem)
+            if(form.Files.Count >0)
+            {
+                //Se usuário selecionou um arquivo,então recebe-se e armazena na variável file
+                var file = form.Files[0];
+                var folder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/Equipes");
+
+                //verifica se o diretório (pasta) já existe
+                //caso não exista,então cria-se
+                if(!Directory.Exists(folder))
+                {
+                    Directory.CreateDirectory(folder);
+                }
+                                        //localhost:5001                                Equipes  imagem.jpg
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/", folder,file.FileName);
+                using(var stream = new FileStream(path,FileMode.Create))
+                {
+                    file.CopyTo(stream);
+                }
+
+                novaEquipe.Imagem = file.FileName;
+
+
+            }
+            else
+            {
+                novaEquipe.Imagem = "padrao.png";
+            }
+
+            //Upload final
 
             //solicitado o método Create para salvar a novaEquipe no CSV
             equipeModel.Create(novaEquipe);
@@ -40,6 +73,16 @@ namespace EPlayers_AspNetCore.Controllers
             ViewBag.Equipes = equipeModel.ReadAll();
 
             return LocalRedirect("~/Equipe/Listar"); //redireciona para a página que se encontra
+        }
+
+        //http://localhost:5000/Equipe/1
+        [Route("{id}")]
+        public IActionResult Excluir(int id)
+        {
+            equipeModel.Delete(id);
+            ViewBag.Equipes = equipeModel.ReadAll();
+            
+            return LocalRedirect("~/Equipe/Listar");
         }
     }
 }
