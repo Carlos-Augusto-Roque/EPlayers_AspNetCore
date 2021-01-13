@@ -34,3 +34,4 @@ C:\Users\PC - CARLOS\Desktop\DEV\C#\EPlayers_AspNetCore\obj\Debug\netcoreapp3.1\
 C:\Users\PC - CARLOS\Desktop\DEV\C#\EPlayers_AspNetCore\obj\Debug\netcoreapp3.1\EPlayers_AspNetCore.pdb
 C:\Users\PC - CARLOS\Desktop\DEV\C#\EPlayers_AspNetCore\obj\Debug\netcoreapp3.1\EPlayers_AspNetCore.genruntimeconfig.cache
 C:\Users\PC - CARLOS\Desktop\DEV\C#\EPlayers_AspNetCore\obj\Debug\netcoreapp3.1\EPlayers_AspNetCore.csproj.CopyComplete
+C:\Users\PC - CARLOS\Desktop\DEV\C#\EPlayers_AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\Equipe\Index.cshtml.g.cs
