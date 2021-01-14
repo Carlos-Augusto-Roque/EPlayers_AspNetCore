@@ -1,0 +1,36 @@
+@model Equipe
+ @{
+     ViewData["Title"] = "Equipes";
+ }
+
+ <form method="POST" action='@Url.Action("Cadastrar")' enctype="multipart/form-data">
+     <label>ID</label>
+     <input type="text" name="IdJogador"/>
+
+     <label>Nome</label>
+     <input type="text" name="Nome"/>
+
+     
+     <button type="submit">Cadastrar</button>
+ </form>
+
+ <table class="table table-striped table-responsive">
+     <thead>
+         <th>ID Jogador</th>
+         <th>Nome</th>
+         <th>ID Equipe</th>
+     </thead>
+
+     <tbody>
+         @foreach (Jogador jogador in ViewBag.Jogadores)
+         {
+             <tr>
+                 <td>@jogador.IdEquipe</td>
+                 <td>@jogador.Nome</td>
+                 
+                 <td><a asp-area="Link para excluir um jogador" asp-controller="Jogador" asp-action="Excluir" asp-route-id="@jogador.IdJogador">Excluir</a></td>
+             </tr>
+         }
+     </tbody>
+
+ </table>

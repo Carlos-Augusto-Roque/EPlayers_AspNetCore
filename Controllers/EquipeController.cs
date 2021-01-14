@@ -51,6 +51,7 @@ namespace EPlayers_AspNetCore.Controllers
                 }
                                         //localhost:5001                                Equipes  imagem.jpg
                 var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/", folder,file.FileName);
+                
                 using(var stream = new FileStream(path,FileMode.Create))
                 {
                     file.CopyTo(stream);
@@ -60,7 +61,7 @@ namespace EPlayers_AspNetCore.Controllers
 
 
             }
-            else
+            else//se o usuário não selecionou nenhuma imagem,o sistema fornecerá a imagem padrão
             {
                 novaEquipe.Imagem = "padrao.png";
             }
