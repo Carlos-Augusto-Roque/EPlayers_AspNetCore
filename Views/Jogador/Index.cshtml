@@ -25,9 +25,9 @@
          @foreach (Jogador jogador in ViewBag.Jogadores)
          {
              <tr>
-                 <td>@jogador.IdEquipe</td>
+                 <td>@jogador.IdJogador</td>
                  <td>@jogador.Nome</td>
-                 
+                 <td>@jogador.IdEquipe</td>
                  <td><a asp-area="Link para excluir um jogador" asp-controller="Jogador" asp-action="Excluir" asp-route-id="@jogador.IdJogador">Excluir</a></td>
              </tr>
          }

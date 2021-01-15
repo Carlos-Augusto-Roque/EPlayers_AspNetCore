@@ -8,26 +8,24 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\fic\\.nuget\\packages\\": {}
+    "C:\\Users\\PC - CARLOS\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\fic\\Desktop\\Nova pasta\\EPlayers_AspNetCore\\EPlayers_AspNetCore.csproj",
+      "projectUniqueName": "C:\\Users\\PC - CARLOS\\Desktop\\DEV\\C#\\EPlayers_AspNetCore\\EPlayers_AspNetCore.csproj",
       "projectName": "EPlayers_AspNetCore",
-      "projectPath": "C:\\Users\\fic\\Desktop\\Nova pasta\\EPlayers_AspNetCore\\EPlayers_AspNetCore.csproj",
-      "packagesPath": "C:\\Users\\fic\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\fic\\Desktop\\Nova pasta\\EPlayers_AspNetCore\\obj\\",
+      "projectPath": "C:\\Users\\PC - CARLOS\\Desktop\\DEV\\C#\\EPlayers_AspNetCore\\EPlayers_AspNetCore.csproj",
+      "packagesPath": "C:\\Users\\PC - CARLOS\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\PC - CARLOS\\Desktop\\DEV\\C#\\EPlayers_AspNetCore\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\fic\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\PC - CARLOS\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -61,7 +59,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.404\\RuntimeIdentifierGraph.json"
       }
     }
   }
