@@ -11,6 +11,12 @@ namespace EPlayers_AspNetCore.Models
         public string Nome { get; set; }
         public int IdEquipe { get; set; }
 
+        //login
+        public string Email { get; set; }
+        public string Senha { get; set; }    
+        
+        
+
         //constante para o caminho da pasta e arquivo 
         private const string PATH = "DataBase/Jogador.csv";
 
@@ -23,7 +29,7 @@ namespace EPlayers_AspNetCore.Models
         //método para preparar a linha do csv
         public string Prepare(Jogador j)
         {
-            return $"{j.IdJogador};{j.Nome};{j.IdEquipe}";
+            return $"{j.IdJogador};{j.Nome};{j.Email};{j.Senha}";
         }
 
         //métodos obrigatórios (Interface IEquipe) 
@@ -50,7 +56,8 @@ namespace EPlayers_AspNetCore.Models
                 Jogador novoJogador = new Jogador();//instaciamento de um objeto equipe
                 novoJogador.IdJogador = int.Parse(linha[0]);
                 novoJogador.Nome = linha[1];
-                novoJogador.IdEquipe = int.Parse(linha[2]); 
+                novoJogador.Email = linha[2];
+                novoJogador.Senha = linha[3]; 
 
                 jogadores.Add(novoJogador);//adicionar o objeto na lista de equipes
             } 

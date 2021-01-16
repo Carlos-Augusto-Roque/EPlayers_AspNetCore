@@ -33,6 +33,8 @@ namespace EPlayers_AspNetCore.Controllers
             Jogador novoJogador = new Jogador();
             novoJogador.IdJogador = Int32.Parse(form["IdJogador"]);
             novoJogador.Nome = form["Nome"];
+            novoJogador.Email = form["Email"];
+            novoJogador.Senha = form["Senha"];
          
 
             //solicitado o método Create para salvar o novoJogador no CSV
