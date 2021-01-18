@@ -24,7 +24,7 @@ body{
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d5379b', endColorstr='#7277c3', GradientType=1 );
 }
 .container{
-    width: 80%;
+    width: 90%;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -66,6 +66,7 @@ ul{
     align-items: center;
     font-size: 23px;
 }
+
 .btn{
     color: white;
     text-decoration: none;
@@ -76,6 +77,14 @@ ul{
 
 .banner .btn{
     margin-top: 230px;
+}
+
+.banner a{
+    margin: 0 20px;
+}
+
+.erro{
+    color:var(--pink);
 }
 
 .sobre{

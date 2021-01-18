@@ -74,3 +74,4 @@ C:\Users\fic\Desktop\Nova pasta\EPlayers_AspNetCore\obj\Debug\netcoreapp3.1\EPla
 C:\Users\fic\Desktop\Nova pasta\EPlayers_AspNetCore\obj\Debug\netcoreapp3.1\EPlayers_AspNetCore.csproj.CopyComplete
 C:\Users\fic\Desktop\Nova pasta\EPlayers_AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\Jogador\Index.cshtml.g.cs
 C:\Users\PC - CARLOS\Desktop\DEV\C#\EPlayers_AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\Jogador\Index.cshtml.g.cs
+C:\Users\PC - CARLOS\Desktop\DEV\C#\EPlayers_AspNetCore\obj\Debug\netcoreapp3.1\Razor\Views\Login\Index.cshtml.g.cs

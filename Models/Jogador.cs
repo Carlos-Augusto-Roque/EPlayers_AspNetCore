@@ -1,96 +1,93 @@
 using System.Collections.Generic;
 using System.IO;
 using EPlayers_AspNetCore.Interfaces;
+using EPlayers_AspNetCore.Models;
 
-namespace EPlayers_AspNetCore.Models
+namespace E_Players_AspNETCore.Models
 {
-    public class Jogador : EPlayersBase,IJogador
+    public class Jogador : EPlayersBase , IJogador
     {
-        //atributos da classe Jogador
         public int IdJogador { get; set; }
         public string Nome { get; set; }
         public int IdEquipe { get; set; }
-
-        //login
         public string Email { get; set; }
-        public string Senha { get; set; }    
-        
-        
+        public string Senha { get; set; }
 
-        //constante para o caminho da pasta e arquivo 
-        private const string PATH = "DataBase/Jogador.csv";
+        public string PATH = "Database/Jogador.csv";
 
-        //método construtor para criar uma pasta e um arquivo
         public Jogador()
         {
-            CreateFolderAndFile(PATH);//chamado o método createfolderandfiles da superclasse "EplayersBase"
-        }        
-
-        //método para preparar a linha do csv
-        public string Prepare(Jogador j)
-        {
-            return $"{j.IdJogador};{j.Nome};{j.Email};{j.Senha}";
+            CreateFolderAndFile(PATH);
         }
 
-        //métodos obrigatórios (Interface IEquipe) 
-        public void Create(Jogador j)//método para criar a equipe
+        /// <summary>
+        /// Adiciona uma Jogador ao CSV
+        /// </summary>
+        /// <param name="j">Jogador</param>
+        public void Create(Jogador j)
         {
-            // preparado um array de string para o método AppendAllLines
-            string[] linhas = {Prepare (j)};
-
-            // acrescentado uma nova linha
-            File.AppendAllLines(PATH,linhas);
+            string[] linha = { PrepararLinha(j) };
+            File.AppendAllLines(PATH, linha);
         }
 
-        public List<Jogador> ReadAll()//método para ler as equipes cadastradas
+        /// <summary>
+        /// Prepara a linha para a estrutura do objeto Jogador
+        /// </summary>
+        /// <param name="j">Objeto "Jogador"</param>
+        /// <returns>Retorna a linha em formato de .csv</returns>
+        private string PrepararLinha(Jogador j)
         {
-            List<Jogador> jogadores = new List<Jogador>();//lista para armazenar as equipes
+            return $"{j.IdJogador};{j.Nome};{j.Email};{j.Senha};{j.IdEquipe}";
+        }
 
-            //ler todas as linhas do csv
+        /// <summary>
+        /// Exclui uma Jogador
+        /// </summary>
+        /// <param name="idJogador"></param>
+        public void Delete(int idJogador)
+        {
+            List<string> linhas = ReadAllLinesCSV(PATH);
+            // 1;FLA;fla.png
+            linhas.RemoveAll(x => x.Split(";")[0] == idJogador.ToString());                        
+            RewriteCSV(PATH, linhas);
+        }
+
+        /// <summary>
+        /// Lê todos as linhas do csv
+        /// </summary>
+        /// <returns>Lista de Jogadors</returns>
+        public List<Jogador> ReadAll()
+        {
+            List<Jogador> jogadores = new List<Jogador>();
             string[] linhas = File.ReadAllLines(PATH);
 
-            foreach (string item in linhas)//ler todos os itens nas linhas
+            foreach (var item in linhas)
             {
-                string[] linha = item.Split(";");//separar os itens da linha 
+                string[] linha = item.Split(";");
 
-                Jogador novoJogador = new Jogador();//instaciamento de um objeto equipe
-                novoJogador.IdJogador = int.Parse(linha[0]);
-                novoJogador.Nome = linha[1];
-                novoJogador.Email = linha[2];
-                novoJogador.Senha = linha[3]; 
+                Jogador jogador = new Jogador();
+                jogador.IdJogador = int.Parse(linha[0]);
+                jogador.Nome = linha[1];
+                jogador.Email = linha[2];
+                jogador.Senha = linha[3];
+                jogador.IdEquipe = int.Parse(linha[4]);
 
-                jogadores.Add(novoJogador);//adicionar o objeto na lista de equipes
-            } 
-
+                jogadores.Add(jogador);
+            }
             return jogadores;
         }
 
-        public void Update(Jogador j)//método para alterar alguma equipe
+        /// <summary>
+        /// Altera uma Jogador
+        /// </summary>
+        /// <param name="j">Jogador alterada</param>
+        public void Update(Jogador j)
         {
             List<string> linhas = ReadAllLinesCSV(PATH);
-
-            //Removendo as linhas com o código comparado
             linhas.RemoveAll(x => x.Split(";")[0] == j.IdJogador.ToString());
-
-            //Adicionado na lista a equipe alterada
-            linhas.Add(Prepare(j));
-
-            //Reescreve o csv com a lista alterada
-            RewriteCSV(PATH,linhas);
-        }
-        public void Delete(int id)//método para deletar uma equipe
-        {
-             List<string> linhas = ReadAllLinesCSV(PATH);
-
-            //Removendo as linhas com o código comparado
-            //ToString -> converte para texto (string)
-            linhas.RemoveAll(x => x.Split(";")[0] == id.ToString());
-
-            //Reescreve o csv com a lista alterada
-            RewriteCSV(PATH,linhas);          
-
+            linhas.Add( PrepararLinha(j) );                        
+            RewriteCSV(PATH, linhas); 
         }
 
-       
     }
 }
